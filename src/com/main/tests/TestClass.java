@@ -18,4 +18,8 @@ public class TestClass extends BaseTest {
                 .takeUserName();
         assertEquals("technoPol10 technoPol10", realUsername);
     }
+    @Test
+    public void testPhotos(){
+
+    }
 }
