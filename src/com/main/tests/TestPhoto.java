@@ -8,6 +8,9 @@ import org.junit.jupiter.api.Test;
 import static junit.framework.Assert.assertEquals;
 
 public class TestPhoto extends BaseTest {
+    /**
+     * Проверка на корректное добавление альбома
+     */
     @Test
     public void testPhotos(){
         final String setAlbumName = "New album!!!";

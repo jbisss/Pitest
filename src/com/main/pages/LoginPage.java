@@ -12,7 +12,11 @@ public class LoginPage {
     private final SelenideElement LOGIN_BUTTON = $(By.xpath("//div[@class=\"login-form-actions\"]/input"));
     private final SelenideElement NAME_FIELD =  $(By.xpath("//div[@class=\"tico ellip\"]"));
 
-
+    /**
+     * Логиниться в аккаунт
+     *
+     * @return новый UserPage
+     */
     public UserPage login(){
         final String LOGIN = "technoPol10";
         final String PASSWORD = "technoPolis2022";

@@ -14,18 +14,43 @@ public class PhotoPage {
     private final SelenideElement PHOTO_BUTTON = $(By.xpath("//*[@data-l=\"t,userPhotos\"]"));
     private final ElementsCollection ALBUM_TITLE_LIST = $$(By.xpath("//*[@class=\"title__x4tyv\"]"));
 
+    /**
+     * Нажимает на кнопку добавления альбома
+     *
+     * @return возвращает текущую страницу
+     */
     public PhotoPage addAlbum(){
         ADD_ALBUM_BUTTON.shouldBe(Condition.visible.because("No button!!!")).click();
         return this;
     }
+
+    /**
+     * Нажимает на кнопку "фото"
+     *
+     * @return возвращает текущую страницу
+     */
     public PhotoPage goToAlbumsList(){
         PHOTO_BUTTON.shouldBe(Condition.visible.because("No button!!!")).click();
         return this;
     }
+
+    /**
+     * Задаёт название альбому
+     *
+     * @param albumName название альбома
+     * @return возвращает текущую страницу
+     */
     public PhotoPage nameAlbum(String albumName){
         ALBUM_TEXT_AREA.shouldBe(Condition.visible.because("No field!!!")).setValue(albumName);
         return this;
     }
+
+    /**
+     * Производит поиск названия в "тайтлах" альбомов
+     *
+     * @param albumName название альбома
+     * @return возвращает название альбома, если находит или null
+     */
     public String findAlbum(String albumName){
         ALBUM_TITLE_LIST.get(0).shouldBe(Condition.visible);
         for (SelenideElement album : ALBUM_TITLE_LIST){
@@ -35,6 +60,12 @@ public class PhotoPage {
         }
         return null;
     }
+
+    /**
+     * Нажатие на кнопку создания альбома
+     *
+     * @return возвращает текущую страницу
+     */
     public PhotoPage createAlbum(){
         CREATE_ALBUM_BUTTON.shouldBe(Condition.visible.because("No button!!!")).click();
         return this;
