@@ -8,10 +8,9 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class UserPage {
     private final SelenideElement PHOTO_BUTTON = $(By.xpath("//*[@data-l=\"t,userPhotos\"]"));
-
+    
     public void goToPhotos()
     {
         PHOTO_BUTTON.shouldBe(Condition.visible.because("Нет кнопки!!")).click();
     }
-
 }

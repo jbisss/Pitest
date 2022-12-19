@@ -15,9 +15,9 @@ public class PhotoPage {
     private final SelenideElement CREATE_ALBUM = $(By.xpath("//*[@data-l=\"t,confirm\"]"));
     private final SelenideElement PHOTO_BUTTON = $(By.xpath("//*[@data-l=\"t,userPhotos\"]"));
     private final ElementsCollection ALBUM_LIST = $$(By.xpath("//*[@class=\"title__x4tyv\"]"));
+
     private final SelenideElement PHOTO_COUNT = $(By.xpath("//a[text()=\"Личные фотографии\"]/../../div[@data-l=\"t,info\"]/div"));
     private final SelenideElement UPLOAD_BUTTON = $(By.xpath("//span[@data-l=\"t,upload-new-photo\"]//input"));
-
 
     public PhotoPage addAlbum(){
         ADD_ALBUM_BUTTON.shouldBe(Condition.visible.because("No button!!!")).click();
@@ -44,6 +44,7 @@ public class PhotoPage {
         CREATE_ALBUM.shouldBe(Condition.visible.because("No button!!!")).click();
         return this;
     }
+
     public PhotoPage uploadPhoto(String photoDir){
         UPLOAD_BUTTON.setValue(photoDir);
         return this;
