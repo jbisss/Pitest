@@ -20,5 +20,10 @@ public class TestPhoto extends BaseTest {
                 .goToAlbumsList()
                 .findAlbum(setAlbumName);
         assertEquals(setAlbumName, albumName);
+    @Test
+    public void testPhotoUpload()
+    {
+        UserPage userPage = new UserPage();
+        userPage.goToPhotos();
     }
 }
