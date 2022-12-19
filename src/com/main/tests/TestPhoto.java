@@ -3,7 +3,7 @@ package com.main.tests;
 import com.main.pages.UserPage;
 import org.junit.jupiter.api.Test;
 
-public class TestPhotoUpload extends BaseTest{
+public class TestPhoto extends BaseTest{
     @Test
     public void testPhotoUpload()
     {
