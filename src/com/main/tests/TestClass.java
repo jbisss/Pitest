@@ -11,4 +11,8 @@ public class TestClass extends BaseTest {
         LoginPage loginPage = new LoginPage();
         assertEquals("technoPol10 technoPol10", loginPage.takeUserName());
     }
+    @Test
+    public void testPhotos(){
+
+    }
 }
