@@ -8,9 +8,14 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class UserPage {
     private final SelenideElement PHOTO_BUTTON = $(By.xpath("//*[@data-l=\"t,userPhotos\"]"));
-    
-    public void goToPhotos()
-    {
+
+    /**
+     * Нажимает на кнопку "фото"
+     *
+     * @return новый PhotoPage
+     */
+    public PhotoPage goToPhotos(){
         PHOTO_BUTTON.shouldBe(Condition.visible.because("Нет кнопки!!")).click();
+        return new PhotoPage();
     }
 }

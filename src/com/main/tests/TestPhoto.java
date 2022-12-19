@@ -1,5 +1,6 @@
 package com.main.tests;
 
+import com.main.pages.LoginPage;
 import com.main.pages.PhotoPage;
 import com.main.pages.UserPage;
 import org.junit.jupiter.api.Test;
@@ -8,14 +9,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class TestPhoto extends BaseTest {
-    private final String PHOTO_DIR = "/home/coincedence/Photos/4.bmp";
+    /**
+     * Проверка на корректное добавление альбома
+     */
     @Test
     public void testPhotos() {
         final String setAlbumName = "New album!!!";
-        UserPage userPage = new UserPage();
-        userPage.goToPhotos();
-        PhotoPage photoPage = new PhotoPage();
-        String albumName = photoPage
+        String albumName = new LoginPage()
+                .logIn()
+                .goToPhotos()
                 .addAlbum()
                 .nameAlbum(setAlbumName)
                 .createAlbum()
