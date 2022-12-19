@@ -5,16 +5,14 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
-import java.util.ArrayList;
-
 import static com.codeborne.selenide.Selenide.*;
 
 public class PhotoPage {
     private final SelenideElement ADD_ALBUM_BUTTON = $(By.xpath("//*[@class=\"button-pro __sec __small\"]"));
     private final SelenideElement ALBUM_TEXT_AREA = $(By.xpath("//*[@name=\"st.layer.photoAlbumName\"]"));
-    private final SelenideElement CREATE_ALBUM = $(By.xpath("//*[@data-l=\"t,confirm\"]"));
+    private final SelenideElement CREATE_ALBUM_BUTTON = $(By.xpath("//*[@data-l=\"t,confirm\"]"));
     private final SelenideElement PHOTO_BUTTON = $(By.xpath("//*[@data-l=\"t,userPhotos\"]"));
-    private final ElementsCollection ALBUM_LIST = $$(By.xpath("//*[@class=\"title__x4tyv\"]"));
+    private final ElementsCollection ALBUM_TITLE_LIST = $$(By.xpath("//*[@class=\"title__x4tyv\"]"));
 
     public PhotoPage addAlbum(){
         ADD_ALBUM_BUTTON.shouldBe(Condition.visible.because("No button!!!")).click();
@@ -29,8 +27,8 @@ public class PhotoPage {
         return this;
     }
     public String findAlbum(String albumName){
-        sleep(2000);
-        for (SelenideElement album : ALBUM_LIST){
+        ALBUM_TITLE_LIST.get(0).shouldBe(Condition.visible);
+        for (SelenideElement album : ALBUM_TITLE_LIST){
             if (album.shouldBe(Condition.visible).getText().equals(albumName)) {
                 return album.getText();
             }
@@ -38,7 +36,7 @@ public class PhotoPage {
         return null;
     }
     public PhotoPage createAlbum(){
-        CREATE_ALBUM.shouldBe(Condition.visible.because("No button!!!")).click();
+        CREATE_ALBUM_BUTTON.shouldBe(Condition.visible.because("No button!!!")).click();
         return this;
     }
 }

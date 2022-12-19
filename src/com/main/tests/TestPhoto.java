@@ -1,5 +1,6 @@
 package com.main.tests;
 
+import com.main.pages.LoginPage;
 import com.main.pages.PhotoPage;
 import com.main.pages.UserPage;
 import org.junit.jupiter.api.Test;
@@ -10,10 +11,9 @@ public class TestPhoto extends BaseTest {
     @Test
     public void testPhotos(){
         final String setAlbumName = "New album!!!";
-        UserPage userPage = new UserPage();
-        userPage.goToPhotos();
-        PhotoPage photoPage = new PhotoPage();
-        String albumName = photoPage
+        String albumName = new LoginPage()
+                .login()
+                .goToPhotos()
                 .addAlbum()
                 .nameAlbum(setAlbumName)
                 .createAlbum()
