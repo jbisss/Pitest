@@ -51,4 +51,9 @@ public class LoginPage {
     public String takeUserName(){
         return NAME_FIELD.text();
     }
+    public void logIn(String login, String pwd){
+        this.setEmail(login)
+                .setPwd(pwd)
+                .click();
+    }
 }

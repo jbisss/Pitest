@@ -16,6 +16,9 @@ public class PhotoPage {
     private final SelenideElement PHOTO_BUTTON = $(By.xpath("//*[@data-l=\"t,userPhotos\"]"));
     private final ElementsCollection ALBUM_LIST = $$(By.xpath("//*[@class=\"title__x4tyv\"]"));
 
+    private final SelenideElement PHOTO_COUNT = $(By.xpath("//a[text()=\"Личные фотографии\"]/../../div[@data-l=\"t,info\"]/div"));
+    private final SelenideElement UPLOAD_BUTTON = $(By.xpath("//span[@data-l=\"t,upload-new-photo\"]//input"));
+
     public PhotoPage addAlbum(){
         ADD_ALBUM_BUTTON.shouldBe(Condition.visible.because("No button!!!")).click();
         return this;
@@ -40,5 +43,26 @@ public class PhotoPage {
     public PhotoPage createAlbum(){
         CREATE_ALBUM.shouldBe(Condition.visible.because("No button!!!")).click();
         return this;
+    }
+
+    public PhotoPage uploadPhoto(String photoDir){
+        UPLOAD_BUTTON.setValue(photoDir);
+        return this;
+    }
+    public void waitForUpload(int expectedCount){
+        PHOTO_COUNT.shouldBe(Condition.visible.because("Нет счетчика фото!"))
+                .shouldHave(Condition.partialText(Integer.toString(expectedCount)));
+    }
+    public int getPhotoCount()
+    {
+        var res = PHOTO_COUNT.shouldBe(Condition.visible.because("Нет счетчика фото!"))
+                .getText().split(" ")[0];
+        try{
+            Integer.parseInt(res);
+        }
+        catch (Exception e){
+            return 0;
+        }
+        return Integer.parseInt(res);
     }
 }
