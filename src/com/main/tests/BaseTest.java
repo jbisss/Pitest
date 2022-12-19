@@ -1,5 +1,6 @@
 package com.main.tests;
 
+import com.main.pages.LoginPage;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 
