@@ -13,4 +13,5 @@ public class UserPage {
     {
         PHOTO_BUTTON.shouldBe(Condition.visible.because("Нет кнопки!!")).click();
     }
+
 }
