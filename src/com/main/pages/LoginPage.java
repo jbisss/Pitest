@@ -66,6 +66,9 @@ public class LoginPage {
     public String takeUserName(){
         return NAME_FIELD.text();
     }
+    /**
+     * Логиниться в аккаунт
+     */
     public void logIn(String login, String pwd){
         this.setEmail(login)
                 .setPwd(pwd)

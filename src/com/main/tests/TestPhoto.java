@@ -12,11 +12,11 @@ public class TestPhoto extends BaseTest {
     /**
      * Проверка на корректное добавление альбома
      */
+    private final String PHOTO_DIR = "D:\\Photos\\images\\iKVyQ-LCrsY.jpg";
     @Test
     public void testPhotos() {
         final String setAlbumName = "New album!!!";
-        String albumName = new LoginPage()
-                .logIn()
+        String albumName = new UserPage()
                 .goToPhotos()
                 .addAlbum()
                 .nameAlbum(setAlbumName)
