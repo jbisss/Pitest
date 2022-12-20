@@ -1,21 +1,24 @@
 package com.main.tests;
 
+import com.main.pages.LoginPage;
 import com.main.pages.PhotoPage;
 import com.main.pages.UserPage;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
+import static junit.framework.Assert.assertEquals;
 
 public class TestPhoto extends BaseTest {
     /**
      * Проверка на корректное добавление альбома
      */
     private final String PHOTO_DIR = "D:\\Photos\\images\\iKVyQ-LCrsY.jpg";
+    @DisplayName("Test checks correct album addition")
     @Test
-    public void testPhotos() {
+    public void testPhotos(){
         final String setAlbumName = "New album!!!";
-        String albumName = new UserPage()
+        String albumName = new LoginPage()
+                .login()
                 .goToPhotos()
                 .addAlbum()
                 .nameAlbum(setAlbumName)
