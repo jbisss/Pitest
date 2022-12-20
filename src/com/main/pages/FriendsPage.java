@@ -18,6 +18,11 @@ public class FriendsPage {
         FRIEND_IN_REQ_LIST_XPATH_START = "//*[contains(text(),\"";
     }
 
+    /**
+     * Поиск друга в одноклассниках
+     * @param friendName имя друга
+     * @return текущую страницу
+     */
     public FriendsPage findFriend(String friendName)
     {
         SEARCH_FIELD.shouldBe(Condition.visible.because("Нет строки поиска"))
@@ -25,26 +30,45 @@ public class FriendsPage {
                 .pressEnter();
         return this;
     }
+    /**
+     * Отправляет запрос на добавление в друзья
+     * @param friendName имя друга
+     * @return текущую страницу
+     */
     public FriendsPage addFriend(String friendName)
     {
         var addFriendButton = $(By.xpath(ADD_FRIEND_BUTTON_XPATH_START + friendName
-                + "')]/../../../..//span[contains(text(), \"Добавить\")]"));
+                + "\")]/../../../..//span[contains(text(), \"Добавить\")]"));
         addFriendButton.should(Condition.exist.because("Друг не найден"))
                 .shouldBe(Condition.visible.because("Нет кнопки \"Добавить в друзья\""))
                 .click();
         return this;
     }
+    /**
+     * Переходит к списку исходящих запросов
+     *
+     * @return текущую страницу
+     */
     public FriendsPage goToFriendRequests()
     {
         SHOW_MORE_BUTTON.shouldBe(Condition.visible.because("Нет кнопки \"Ещё\"")).click();
         GO_TO_OUTGOING_REQS_BUTTON.shouldBe(Condition.visible.because("Нет кнопки \"Исходящие заявки\"")).click();
         return this;
     }
+    /**
+     * Проверяет существование запроса на добавление друга с именем friendName
+     * @param friendName имя друга
+     * @return true, если запрос найден
+     */
     public boolean checkRequestExistence(String friendName)
     {
         var reqXpath = FRIEND_IN_REQ_LIST_XPATH_START + friendName + "\")]";
         return $(By.xpath(reqXpath)).exists();
     }
+    /**
+     * Удаляет запрос на добавление друга friendName
+     * @param friendName имя друга
+     */
     public void removeFriendRequest(String friendName)
     {
         var removeButton = $(By.xpath(FRIEND_IN_REQ_LIST_XPATH_START + friendName + "\")]/../../..//span"));
