@@ -8,10 +8,16 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class FriendsPage {
     private final SelenideElement SEARCH_FIELD = $(By.xpath("//div[contains(@class,\"search_cnt\")]//input"));
-    private final String ADD_FRIEND_BUTTON_XPATH_START = "//*[contains(text(),'";
+    private final String ADD_FRIEND_BUTTON_XPATH_START;
     private final SelenideElement SHOW_MORE_BUTTON = $(By.xpath("//span[contains(@class,'SecLabelText')]"));
     private final SelenideElement GO_TO_OUTGOING_REQS_BUTTON = $(By.xpath("//a[contains(@data-l,'OutgoingFriendRequest')]"));
-    private final String FRIEND_IN_REQ_LIST_XPATH_START = "//*[contains(text(),\"";
+    private final String FRIEND_IN_REQ_LIST_XPATH_START;
+    // инициализируем константы в инициализаторы, потому что при создании - ругается)
+    {
+        ADD_FRIEND_BUTTON_XPATH_START = "//*[contains(text(),\"";
+        FRIEND_IN_REQ_LIST_XPATH_START = "//*[contains(text(),\"";
+    }
+
     public FriendsPage findFriend(String friendName)
     {
         SEARCH_FIELD.shouldBe(Condition.visible.because("Нет строки поиска"))

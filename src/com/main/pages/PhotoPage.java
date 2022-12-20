@@ -5,8 +5,6 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
-import java.util.ArrayList;
-
 import static com.codeborne.selenide.Selenide.*;
 
 public class PhotoPage {

@@ -1,6 +1,5 @@
 package com.main.tests;
 
-import com.main.pages.LoginPage;
 import com.main.pages.PhotoPage;
 import com.main.pages.UserPage;
 import org.junit.jupiter.api.Test;

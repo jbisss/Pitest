@@ -15,8 +15,9 @@ public class UserPage {
      *
      * @return новый PhotoPage
      */
-    public void goToPhotos(){
+    public PhotoPage goToPhotos(){
         PHOTO_BUTTON.shouldBe(Condition.visible.because("Нет кнопки!!")).click();
+        return new PhotoPage();
     }
     public void goToFriendList()
     {

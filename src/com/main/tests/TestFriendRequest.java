@@ -5,6 +5,7 @@ import com.main.pages.UserPage;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TestFriendRequest extends BaseTest{
     private final String FRIEND_NAME="technoPol3";
@@ -18,7 +19,7 @@ public class TestFriendRequest extends BaseTest{
                 .findFriend(FRIEND_NAME)
                 .addFriend(FRIEND_NAME)
                 .goToFriendRequests();
-        assertEquals(friendsPage.checkRequestExistence(FRIEND_NAME), true, "Заявка не была создана");
+        assertTrue(friendsPage.checkRequestExistence(FRIEND_NAME), "Заявка не была создана");
         friendsPage.removeFriendRequest(FRIEND_NAME);
     }
 }
