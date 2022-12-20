@@ -28,6 +28,7 @@ public class TestPhoto extends BaseTest {
                 .findAlbum(setAlbumName);
         assertEquals(setAlbumName, albumName);
     }
+    @DisplayName("Test checks correct photo upload")
     @Test
     public void testPhotoUpload()
     {
