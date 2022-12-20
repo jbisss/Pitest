@@ -35,5 +35,6 @@ public class TestPhoto extends BaseTest {
         photoPage.uploadPhoto(PHOTO_DIR);
         photoPage.waitForUpload(previousCount+1);
         assertEquals(previousCount + 1, photoPage.getPhotoCount(), "Фото не было загружено!");
+
     }
 }
