@@ -10,8 +10,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TestFriendRequest extends BaseTest{
     private final String FRIEND_NAME="technoPol3";
-    @Test
     @DisplayName("Тест создания запроса на добавление друга")
+    @Test
     public void testFriendRequest()
     {
         UserPage userPage = new UserPage();
