@@ -11,13 +11,8 @@ public class TestClass extends BaseTest {
     @DisplayName("Test checks correct logging in")
     @Test
     public void testLogin(){
-        final String LOGIN = "technoPol10";
-        final String PASSWORD = "technoPolis2022";
         LoginPage loginPage = new LoginPage();
         String realUsername = loginPage
-                .setEmail(LOGIN)
-                .setPwd(PASSWORD)
-                .click()
                 .takeUserName();
         assertEquals("technoPol10 technoPol10", realUsername);
     }
