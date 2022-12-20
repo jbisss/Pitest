@@ -7,7 +7,7 @@ import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.*;
 
-public class PhotoPage {
+public class PhotoPage extends LoadablePage {
     private final SelenideElement ADD_ALBUM_BUTTON = $(By.xpath("//*[@class=\"button-pro __sec __small\"]"));
     private final SelenideElement ALBUM_TEXT_AREA = $(By.xpath("//*[@name=\"st.layer.photoAlbumName\"]"));
     private final SelenideElement CREATE_ALBUM_BUTTON = $(By.xpath("//*[@data-l=\"t,confirm\"]"));
@@ -52,7 +52,7 @@ public class PhotoPage {
      * @return возвращает название альбома, если находит или null
      */
     public String findAlbum(String albumName){
-        ALBUM_TITLE_LIST.get(0).shouldBe(Condition.visible);
+        checkPage();
         for (SelenideElement album : ALBUM_TITLE_LIST){
             if (album.shouldBe(Condition.visible).getText().equals(albumName)) {
                 return album.getText();
@@ -69,5 +69,14 @@ public class PhotoPage {
     public PhotoPage createAlbum(){
         CREATE_ALBUM_BUTTON.shouldBe(Condition.visible.because("No button!!!")).click();
         return this;
+    }
+
+    /**
+     * Проверяет загружена ли страница
+     */
+    @Override
+    public void checkPage(){
+        ALBUM_TITLE_LIST.get(0).shouldBe(Condition.visible);
+        System.out.println("Success");
     }
 }

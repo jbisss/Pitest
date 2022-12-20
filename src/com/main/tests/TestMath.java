@@ -1,5 +1,6 @@
 package com.main.tests;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static junit.framework.Assert.assertEquals;
@@ -35,23 +36,17 @@ public class TestMath {
         return ++a;
     }
 
-    /**
-     * Тест корректного суммирования
-     */
+    @DisplayName("Test checks correct summation")
     @Test
     public void testSum(){
         assertEquals(10, sum(2,8));
     }
-    /**
-     * Тест корректного произведения двух чисел
-     */
+    @DisplayName("Test checks correct multiplication")
     @Test
     public void testMultiply(){
         assertEquals(12, multiply(6,2));
     }
-    /**
-     * Тест корректного инкрементирования числа
-     */
+    @DisplayName("Test checks correct incrementation")
     @Test
     public void testIncrement(){
         assertEquals(7, increment(6));
