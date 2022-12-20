@@ -73,15 +73,28 @@ public class PhotoPage extends LoadablePage {
         CREATE_ALBUM_BUTTON.shouldBe(Condition.visible.because("No button!!!")).click();
         return this;
     }
-
+    /**
+     * Загружает фото на сайт
+     *
+     * @return возвращает текущую страницу
+     */
     public PhotoPage uploadPhoto(String photoDir){
         UPLOAD_BUTTON.setValue(photoDir);
         return this;
     }
+    /**
+     * Ждет пока не измениться кол-во загруженных на сайт фотографий
+     *
+     */
     public void waitForUpload(int expectedCount){
         PHOTO_COUNT.shouldBe(Condition.visible.because("Нет счетчика фото!"))
                 .shouldHave(Condition.partialText(Integer.toString(expectedCount)));
     }
+    /**
+     * Получить кол-во фотографий в профиле
+     *
+     * @return возвращает текущую страницу
+     */
     public int getPhotoCount()
     {
         var res = PHOTO_COUNT.shouldBe(Condition.visible.because("Нет счетчика фото!"))
