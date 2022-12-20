@@ -14,20 +14,6 @@ public class TestPhoto extends BaseTest {
      * Проверка на корректное добавление альбома
      */
     private final String PHOTO_DIR = "D:\\Photos\\images\\iKVyQ-LCrsY.jpg";
-    @DisplayName("Test checks correct album addition")
-    @Test
-    public void testPhotos(){
-        final String setAlbumName = "New album!!!";
-        String albumName = new LoginPage()
-                .login()
-                .goToPhotos()
-                .addAlbum()
-                .nameAlbum(setAlbumName)
-                .createAlbum()
-                .goToAlbumsList()
-                .findAlbum(setAlbumName);
-        assertEquals(setAlbumName, albumName);
-    }
     @DisplayName("Test checks correct photo upload")
     @Test
     public void testPhotoUpload()
@@ -39,5 +25,18 @@ public class TestPhoto extends BaseTest {
         photoPage.uploadPhoto(PHOTO_DIR);
         photoPage.waitForUpload(previousCount+1);
         Assertions.assertEquals(previousCount + 1, photoPage.getPhotoCount(), "Фото не было загружено!");
+    }
+    @DisplayName("Test checks correct album addition")
+    @Test
+    public void testPhotos(){
+        final String setAlbumName = "New album!!!";
+        String albumName = new UserPage()
+                .goToPhotos()
+                .addAlbum()
+                .nameAlbum(setAlbumName)
+                .createAlbum()
+                .goToAlbumsList()
+                .findAlbum(setAlbumName);
+        assertEquals(setAlbumName, albumName);
     }
 }

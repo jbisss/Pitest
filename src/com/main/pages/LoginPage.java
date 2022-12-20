@@ -17,7 +17,7 @@ public class LoginPage {
      *
      * @return новый UserPage
      */
-    public UserPage login(){
+    /*public UserPage login(){
         final String LOGIN = "technoPol10";
         final String PASSWORD = "technoPolis2022";
         LoginPage loginPage = new LoginPage();
@@ -26,7 +26,7 @@ public class LoginPage {
                 .setPwd(PASSWORD)
                 .click();
         return new UserPage();
-    }
+    }*/
     /**
      * Возвращает текущую страницу после установки email
      *
