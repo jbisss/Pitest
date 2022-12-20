@@ -3,11 +3,11 @@ package com.main.tests;
 import com.main.pages.LoginPage;
 import com.main.pages.PhotoPage;
 import com.main.pages.UserPage;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertTrue;
 
 public class TestPhoto extends BaseTest {
     /**
@@ -37,6 +37,6 @@ public class TestPhoto extends BaseTest {
         var previousCount = photoPage.getPhotoCount();
         photoPage.uploadPhoto(PHOTO_DIR);
         photoPage.waitForUpload(previousCount+1);
-        assertTrue(previousCount + 1, photoPage.getPhotoCount(), "Фото не было загружено!");
+        Assertions.assertEquals(previousCount + 1, photoPage.getPhotoCount(), "Фото не было загружено!");
     }
 }
