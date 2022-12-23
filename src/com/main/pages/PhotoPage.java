@@ -8,7 +8,11 @@ import org.openqa.selenium.By;
 import static com.codeborne.selenide.Selenide.*;
 
 public class PhotoPage extends LoadablePage {
+    private final ElementsCollection ALBUM_SETTINGS = $$(By.xpath("//*[@class=\"title__x4tyv\"]/../../div"));
     private final SelenideElement ADD_ALBUM_BUTTON = $(By.xpath("//*[@class=\"button-pro __sec __small\"]"));
+    private final SelenideElement MENU_ALBUM_BUTTON = $(By.xpath("//*[@class=\"menu-item__qx66s\"]"));
+    private final SelenideElement DELETE_ALBUM_BUTTON = $(By.xpath("//*[@class=\"button-pro __sec __small\"]"));
+    private final SelenideElement APPROVE_DELETE_ALBUM_BUTTON = $(By.xpath("//*[@data-l=\"t,confirm\"]"));
     private final SelenideElement ALBUM_TEXT_AREA = $(By.xpath("//*[@name=\"st.layer.photoAlbumName\"]"));
     private final SelenideElement CREATE_ALBUM_BUTTON = $(By.xpath("//*[@data-l=\"t,confirm\"]"));
     private final SelenideElement PHOTO_BUTTON = $(By.xpath("//*[@data-l=\"t,userPhotos\"]"));
@@ -16,7 +20,17 @@ public class PhotoPage extends LoadablePage {
 
     private final SelenideElement PHOTO_COUNT = $(By.xpath("//a[text()=\"Личные фотографии\"]/../../div[@data-l=\"t,info\"]/div"));
     private final SelenideElement UPLOAD_BUTTON = $(By.xpath("//span[@data-l=\"t,upload-new-photo\"]//input"));
-
+    public void approveDeletion(){
+        APPROVE_DELETE_ALBUM_BUTTON.shouldBe(Condition.visible).click();
+    }
+    public PhotoPage deleteAlbum(){
+        DELETE_ALBUM_BUTTON.shouldBe(Condition.visible).click();
+        return this;
+    }
+    public PhotoPage goToMenu(){
+        MENU_ALBUM_BUTTON.shouldBe(Condition.visible).click();
+        return  this;
+    }
     /**
      * Нажимает на кнопку добавления альбома
      *
@@ -54,14 +68,20 @@ public class PhotoPage extends LoadablePage {
      * @param albumName название альбома
      * @return возвращает название альбома, если находит или null
      */
-    public String findAlbum(String albumName){
+    public int findAlbum(String albumName){
         checkPage();
+        int i = 0;
         for (SelenideElement album : ALBUM_TITLE_LIST){
-            if (album.shouldBe(Condition.visible).getText().equals(albumName)) {
-                return album.getText();
+            if(album.shouldBe(Condition.visible).getText().equals(albumName)){
+                return i;
             }
+            i++;
         }
-        return null;
+        return -1;
+    }
+
+    public SelenideElement getALBUM_SETTINGS(int index) {
+        return ALBUM_SETTINGS.get(index);
     }
 
     /**
