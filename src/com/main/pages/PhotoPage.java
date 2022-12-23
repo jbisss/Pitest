@@ -1,14 +1,13 @@
 package com.main.pages;
 
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.*;
 
-public class PhotoPage extends LoadablePage {
-    private final ElementsCollection ALBUM_SETTINGS = $$(By.xpath("//*[@class=\"title__x4tyv\"]/../../div"));
+public class PhotoPage {
+    private final SelenideElement LAST_ELEMENT_TO_LOAD = $(By.xpath("//div[@id=\"rightColumn\"]"));
     private final SelenideElement ADD_ALBUM_BUTTON = $(By.xpath("//*[@class=\"button-pro __sec __small\"]"));
     private final SelenideElement MENU_ALBUM_BUTTON = $(By.xpath("//*[@class=\"menu-item__qx66s\"]"));
     private final SelenideElement DELETE_ALBUM_BUTTON = $(By.xpath("//*[@class=\"button-pro __sec __small\"]"));
@@ -16,17 +15,32 @@ public class PhotoPage extends LoadablePage {
     private final SelenideElement ALBUM_TEXT_AREA = $(By.xpath("//*[@name=\"st.layer.photoAlbumName\"]"));
     private final SelenideElement CREATE_ALBUM_BUTTON = $(By.xpath("//*[@data-l=\"t,confirm\"]"));
     private final SelenideElement PHOTO_BUTTON = $(By.xpath("//*[@data-l=\"t,userPhotos\"]"));
-    private final ElementsCollection ALBUM_TITLE_LIST = $$(By.xpath("//*[@class=\"title__x4tyv\"]"));
-
+    private final String TITLE = "//ul[@class=\"ugrid_cnt\"]//*[contains(text(),\"";
     private final SelenideElement PHOTO_COUNT = $(By.xpath("//a[text()=\"Личные фотографии\"]/../../div[@data-l=\"t,info\"]/div"));
     private final SelenideElement UPLOAD_BUTTON = $(By.xpath("//span[@data-l=\"t,upload-new-photo\"]//input"));
+
+    /**
+     * Нажатие кнопки подтвердить
+     */
     public void approveDeletion(){
         APPROVE_DELETE_ALBUM_BUTTON.shouldBe(Condition.visible).click();
     }
+
+    /**
+     * Удаление альбома
+     *
+     * @return текущую страницу
+     */
     public PhotoPage deleteAlbum(){
         DELETE_ALBUM_BUTTON.shouldBe(Condition.visible).click();
         return this;
     }
+
+    /**
+     * Нажатие на кнопку найстроек
+     *
+     * @return текущую страницу
+     */
     public PhotoPage goToMenu(){
         MENU_ALBUM_BUTTON.shouldBe(Condition.visible).click();
         return  this;
@@ -68,20 +82,21 @@ public class PhotoPage extends LoadablePage {
      * @param albumName название альбома
      * @return возвращает название альбома, если находит или null
      */
-    public int findAlbum(String albumName){
-        checkPage();
-        int i = 0;
-        for (SelenideElement album : ALBUM_TITLE_LIST){
-            if(album.shouldBe(Condition.visible).getText().equals(albumName)){
-                return i;
-            }
-            i++;
-        }
-        return -1;
+    public boolean findAlbum(String albumName){
+        final SelenideElement ALBUM_TITLE = $(By.xpath(TITLE + albumName + "\")]"));
+        return ALBUM_TITLE.shouldBe(Condition.visible).exists();
     }
 
-    public SelenideElement getALBUM_SETTINGS(int index) {
-        return ALBUM_SETTINGS.get(index);
+    /**
+     * Открыть настройки альбома
+     *
+     * @param albumName имя альбома
+     */
+    public void goToAlbumSettings(String albumName) {
+        LAST_ELEMENT_TO_LOAD.shouldBe(Condition.visible);
+        $(By.xpath(TITLE + albumName + "\")]" + "/../../div[contains(@class, \"actions-menu\")]"))
+                .shouldBe(Condition.visible)
+                .click();
     }
 
     /**
@@ -95,12 +110,9 @@ public class PhotoPage extends LoadablePage {
     }
     /**
      * Загружает фото на сайт
-     *
-     * @return возвращает текущую страницу
      */
-    public PhotoPage uploadPhoto(String photoDir){
+    public void uploadPhoto(String photoDir){
         UPLOAD_BUTTON.setValue(photoDir);
-        return this;
     }
     /**
      * Ждет пока не измениться кол-во загруженных на сайт фотографий
@@ -126,14 +138,5 @@ public class PhotoPage extends LoadablePage {
             return 0;
         }
         return Integer.parseInt(res);
-    }
-
-    /**
-     * Проверяет загружена ли страница
-     */
-    @Override
-    public void checkPage(){
-        ALBUM_TITLE_LIST.get(0).shouldBe(Condition.visible);
-        System.out.println("Success");
     }
 }

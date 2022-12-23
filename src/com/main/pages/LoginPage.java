@@ -13,21 +13,6 @@ public class LoginPage {
     private final SelenideElement NAME_FIELD =  $(By.xpath("//div[@class=\"tico ellip\"]"));
 
     /**
-     * Логиниться в аккаунт
-     *
-     * @return новый UserPage
-     */
-    /*public UserPage login(){
-        final String LOGIN = "technoPol10";
-        final String PASSWORD = "technoPolis2022";
-        LoginPage loginPage = new LoginPage();
-        loginPage
-                .setEmail(LOGIN)
-                .setPwd(PASSWORD)
-                .click();
-        return new UserPage();
-    }*/
-    /**
      * Возвращает текущую страницу после установки email
      *
      * @param email email для входа

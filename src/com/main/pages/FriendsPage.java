@@ -3,10 +3,8 @@ package com.main.pages;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.refresh;
 
 public class FriendsPage {
     private final SelenideElement SEARCH_FIELD = $(By.xpath("//div[contains(@class,\"search_cnt\")]//input"));
@@ -36,17 +34,16 @@ public class FriendsPage {
     }
     /**
      * Отправляет запрос на добавление в друзья
+     *
      * @param friendName имя друга
-     * @return текущую страницу
      */
-    public FriendsPage addFriend(String friendName)
+    public void addFriend(String friendName)
     {
         var addFriendButton = $(By.xpath(ADD_FRIEND_BUTTON_XPATH_START + friendName
                 + "\")]/../../../..//span[contains(text(), \"Добавить\")]"));
         addFriendButton.should(Condition.exist.because("Друг не найден"))
                 .shouldBe(Condition.visible.because("Нет кнопки \"Добавить в друзья\""))
                 .click();
-        return this;
     }
     /**
      * Переходит к списку исходящих запросов

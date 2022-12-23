@@ -7,9 +7,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertTrue;
-
 public class TestPhoto extends BaseTest {
     private final String PHOTO_DIR = "D:\\Photos\\images\\iKVyQ-LCrsY.jpg";
     @DisplayName("Test checks correct photo upload")

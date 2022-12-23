@@ -4,17 +4,19 @@ import com.main.pages.FriendsPage;
 import com.main.pages.LoginPage;
 import com.main.pages.UserPage;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selenide.open;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TestFriendRequest extends BaseTest{
     private final String FRIEND_NAME="technoPol3";
     private boolean friendWasAdded;
+
+    /**
+     * Удаление заявки
+     */
     @AfterEach
     public void deleteFriendRequest()
     {

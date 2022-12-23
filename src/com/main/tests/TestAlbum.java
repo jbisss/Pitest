@@ -16,25 +16,29 @@ public class TestAlbum extends BaseTest {
         LoginPage loginPage = new LoginPage();
         loginPage.logIn(LOGIN, PASSWORD);
         final String setAlbumName = "New album!!!";
-        int isAlbumExist = new UserPage()
+        boolean isAlbumExist = new UserPage()
                 .goToPhotos()
                 .addAlbum()
                 .nameAlbum(setAlbumName)
                 .createAlbum()
                 .goToAlbumsList()
                 .findAlbum(setAlbumName);
-        assertTrue(isAlbumExist != -1);
+        assertTrue(isAlbumExist);
     }
+
+    /**
+     * Удаление альбома
+     */
     @AfterEach
     public void closeTest(){
         final String setAlbumName = "New album!!!";
         PhotoPage photoPage = new PhotoPage();
-        int albumIndex = photoPage
+        boolean albumIndex = photoPage
                 .goToAlbumsList()
                 .findAlbum(setAlbumName);
-        if (albumIndex != -1) {
+        if (albumIndex) {
             photoPage
-                    .getALBUM_SETTINGS(albumIndex).click();
+                    .goToAlbumSettings(setAlbumName);
             photoPage
                     .goToMenu()
                     .deleteAlbum()
