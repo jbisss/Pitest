@@ -48,11 +48,14 @@
                             junit.framework.Assert
                         </avoidCallsTo>
                         <targetClasses>
-                            <param>com.maifdsgdfgs</param>
+                            <param>com.main*</param>
                         </targetClasses>
                         <targetTests>
-                            <param>com.maindsfdsfdfs*</param>
+                            <param>*</param>
                         </targetTests>
+                        <basedir>
+
+                        </basedir>
                     </configuration>
                 </plugin>
             </plugins>

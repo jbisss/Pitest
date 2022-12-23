@@ -3,12 +3,15 @@ package com.main.pages;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.refresh;
 
 public class FriendsPage {
     private final SelenideElement SEARCH_FIELD = $(By.xpath("//div[contains(@class,\"search_cnt\")]//input"));
     private final String ADD_FRIEND_BUTTON_XPATH_START;
+    private final SelenideElement LAST_ELEMENT_TO_LOAD = $(By.xpath("//div[@id=\"rightColumn\"]"));
     private final SelenideElement SHOW_MORE_BUTTON = $(By.xpath("//span[contains(@class,'SecLabelText')]"));
     private final SelenideElement GO_TO_OUTGOING_REQS_BUTTON = $(By.xpath("//a[contains(@data-l,'OutgoingFriendRequest')]"));
     private final String FRIEND_IN_REQ_LIST_XPATH_START;
@@ -25,7 +28,8 @@ public class FriendsPage {
      */
     public FriendsPage findFriend(String friendName)
     {
-        SEARCH_FIELD.shouldBe(Condition.visible.because("Нет строки поиска"))
+        LAST_ELEMENT_TO_LOAD.shouldBe(Condition.visible.because("Не удалось загрузить страницу"));
+        SEARCH_FIELD.shouldBe(Condition.interactable.because("Нет строки поиска"))
                 .setValue(friendName)
                 .pressEnter();
         return this;
