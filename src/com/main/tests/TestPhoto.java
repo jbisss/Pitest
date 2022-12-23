@@ -16,6 +16,8 @@ public class TestPhoto extends BaseTest {
     @Test
     public void testPhotoUpload()
     {
+        LoginPage loginPage = new LoginPage();
+        loginPage.logIn(LOGIN, PASSWORD);
         UserPage userPage = new UserPage();
         userPage.goToPhotos();
         PhotoPage photoPage = new PhotoPage();

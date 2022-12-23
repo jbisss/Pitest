@@ -1,5 +1,6 @@
 package com.main.tests;
 
+import com.main.pages.LoginPage;
 import com.main.pages.PhotoPage;
 import com.main.pages.UserPage;
 import org.junit.jupiter.api.AfterEach;
@@ -12,6 +13,8 @@ public class TestAlbum extends BaseTest {
     @DisplayName("Test checks correct album addition")
     @Test
     public void testPhotos(){
+        LoginPage loginPage = new LoginPage();
+        loginPage.logIn(LOGIN, PASSWORD);
         final String setAlbumName = "New album!!!";
         int isAlbumExist = new UserPage()
                 .goToPhotos()

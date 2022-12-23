@@ -16,8 +16,6 @@ public class BaseTest {
     @BeforeEach
     public void openPage(){
         open("https://ok.ru");
-        LoginPage loginPage = new LoginPage();
-        loginPage.logIn(LOGIN, PASSWORD);
     }
     @AfterEach
     public void closePage(){
