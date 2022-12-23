@@ -11,6 +11,7 @@ public class TestLogin extends BaseTest {
     @Test
     public void testLogin(){
         LoginPage loginPage = new LoginPage();
+        loginPage.logIn(LOGIN, PASSWORD);
         assertEquals("technoPol10 technoPol10", loginPage.takeUserName());
     }
 }

@@ -1,6 +1,7 @@
 package com.main.tests;
 
 import com.main.pages.FriendsPage;
+import com.main.pages.LoginPage;
 import com.main.pages.UserPage;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -30,6 +31,8 @@ public class TestFriendRequest extends BaseTest{
     @Test
     public void testFriendRequest()
     {
+        LoginPage loginPage = new LoginPage();
+        loginPage.logIn(LOGIN, PASSWORD);
         friendWasAdded = false;
         UserPage userPage = new UserPage();
         userPage.goToFriendList();
