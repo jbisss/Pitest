@@ -13,7 +13,7 @@ import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.Selenide.open;
 
 public class TestPhoto extends BaseTest {
-    private final String PHOTO_DIR = "/home/coincedence/Photos/4.bmp";
+    private final String PHOTO_DIR = "D:\\Photos\\images\\ben.jpg";
     private boolean photoWasAdded;
     @DisplayName("Test checks correct photo upload")
     @Test

@@ -16,9 +16,9 @@ public class PhotoPage {
     private final SelenideElement ALBUM_TEXT_AREA = $(By.xpath("//*[@name=\"st.layer.photoAlbumName\"]"));
     private final SelenideElement CREATE_ALBUM_BUTTON = $(By.xpath("//*[@data-l=\"t,confirm\"]"));
     private final SelenideElement PHOTO_BUTTON = $(By.xpath("//*[@data-l=\"t,userPhotos\"]"));
-    private final String TITLE = "//ul[@class=\"ugrid_cnt\"]//*[contains(text(),\"";
     private final SelenideElement PHOTO_COUNT = $(By.xpath("//a[text()=\"Личные фотографии\"]/../../div[@data-l=\"t,info\"]/div"));
     private final SelenideElement UPLOAD_BUTTON = $(By.xpath("//span[@data-l=\"t,upload-new-photo\"]//input"));
+    private final String TITLE = "//ul[@class=\"ugrid_cnt\"]//*[contains(text(),\"";
 
     /**
      * Нажатие кнопки подтвердить

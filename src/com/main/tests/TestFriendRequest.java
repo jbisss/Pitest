@@ -29,7 +29,7 @@ public class TestFriendRequest extends BaseTest{
                     .removeFriendRequest(FRIEND_NAME);
         }
     }
-    @DisplayName("Тест создания запроса на добавление друга")
+    @DisplayName("Test of making friend request")
     @Test
     public void testFriendRequest()
     {
