@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import static com.codeborne.selenide.Selenide.*;
 
 public class PhotoPage {
+    private  final SelenideElement DELETE_LAST_ADDED_PHOTO_BUTTON = $(By.xpath("//a[contains(@class,\"photo-card_control __remove\")]"));
     private final SelenideElement LAST_ELEMENT_TO_LOAD = $(By.xpath("//div[@id=\"rightColumn\"]"));
     private final SelenideElement ADD_ALBUM_BUTTON = $(By.xpath("//*[@class=\"button-pro __sec __small\"]"));
     private final SelenideElement MENU_ALBUM_BUTTON = $(By.xpath("//*[@class=\"menu-item__qx66s\"]"));
@@ -92,11 +93,12 @@ public class PhotoPage {
      *
      * @param albumName имя альбома
      */
-    public void goToAlbumSettings(String albumName) {
+    public PhotoPage goToAlbumSettings(String albumName) {
         LAST_ELEMENT_TO_LOAD.shouldBe(Condition.visible);
         $(By.xpath(TITLE + albumName + "\")]" + "/../../div[contains(@class, \"actions-menu\")]"))
                 .shouldBe(Condition.visible)
                 .click();
+        return this;
     }
 
     /**
@@ -138,5 +140,10 @@ public class PhotoPage {
             return 0;
         }
         return Integer.parseInt(res);
+    }
+
+    public SelenideElement getLastAddedPhoto() {
+        DELETE_LAST_ADDED_PHOTO_BUTTON.shouldBe(Condition.visible);
+        return DELETE_LAST_ADDED_PHOTO_BUTTON;
     }
 }

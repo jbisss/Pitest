@@ -38,8 +38,7 @@ public class TestAlbum extends BaseTest {
                 .findAlbum(setAlbumName);
         if (albumIndex) {
             photoPage
-                    .goToAlbumSettings(setAlbumName);
-            photoPage
+                    .goToAlbumSettings(setAlbumName)
                     .goToMenu()
                     .deleteAlbum()
                     .approveDeletion();
